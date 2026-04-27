@@ -144,7 +144,7 @@ const EventPage = () => {
       <div className="event-hero">
         <div className="event-hero-bg"/>
         <div className="container" style={{position: 'relative', zIndex: 1, paddingTop: 60}}>
-          <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
+          <div className="event-hero-header" style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start'}}>
             <div>
               <span className="badge">{typeEmoji[event.type]} {typeLabel[event.type]}</span>
               <h1 style={{fontSize: '3.5rem', marginTop: 12}}>{event.title}</h1>
@@ -163,7 +163,7 @@ const EventPage = () => {
       </div>
 
       <div className="container">
-        <div className="events-grid" style={{gridTemplateColumns: isOwner ? '1fr' : '1fr 360px', gap: 32, marginTop: 40}}>
+        <div className="event-page-grid" style={{display: 'grid', gridTemplateColumns: isOwner ? '1fr' : '1fr 360px', gap: 32, marginTop: 40}}>
           <div style={{display: 'flex', flexDirection: 'column', gap: 24}}>
             {/* Owner Management Panel */}
             {isOwner && (
@@ -191,7 +191,7 @@ const EventPage = () => {
             </div>
 
             <CommentWall eventId={event.id} isAdmin={isOwner} />
-            <Gallery images={event.gallery || []} isAdmin={isOwner} />
+            <Gallery eventId={event.id} images={event.gallery || []} isAdmin={isOwner} />
           </div>
 
           {!isOwner && (

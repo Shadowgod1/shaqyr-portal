@@ -61,8 +61,21 @@ export const EventProvider = ({ children }) => {
     return data;
   };
 
+  const updateEvent = async (id, updateData) => {
+    const { data, error } = await supabase
+      .from('events')
+      .update(updateData)
+      .eq('id', id)
+      .select();
+
+    if (data) {
+      setEvents(events.map(e => e.id === id ? data[0] : e));
+    }
+    return { data, error };
+  };
+
   return (
-    <EventContext.Provider value={{ events, createEvent, getEventByCode, loading }}>
+    <EventContext.Provider value={{ events, createEvent, updateEvent, getEventByCode, loading }}>
       {children}
     </EventContext.Provider>
   );
