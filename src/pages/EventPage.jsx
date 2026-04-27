@@ -191,6 +191,7 @@ const EventPage = () => {
             </div>
 
             <CommentWall eventId={event.id} isAdmin={isOwner} />
+            <Gallery images={event.gallery || []} isAdmin={isOwner} />
           </div>
 
           {!isOwner && (

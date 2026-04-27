@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { useEvents } from '../context/EventContext';
-import { Plus, Calendar, MapPin, Copy, ExternalLink, Sparkles } from 'lucide-react';
+import { Plus, Calendar, MapPin, Copy, ExternalLink, Sparkles, User } from 'lucide-react';
 
 const typeLabel = { wedding: 'Свадьба', birthday: 'День рождения', party: 'Вечеринка' };
 const typeBadge = { wedding: 'badge-wedding', birthday: 'badge-birthday', party: 'badge-party' };
 
 const Dashboard = () => {
   const { events } = useEvents();
+  const { user } = useAuth();
 
   const copyLink = (code) => {
     const link = `${window.location.origin}/event/${code}`;
@@ -20,8 +22,11 @@ const Dashboard = () => {
       {/* Header */}
       <div className="dash-header">
         <div>
-          <h1>Мои события</h1>
-          <p>Управляйте вашими праздниками и гостями</p>
+          <div style={{display:'flex', alignItems:'center', gap:10, marginBottom:8}}>
+            <span className="badge" style={{background:'rgba(129,140,248,0.1)', color:'var(--accent)'}}>Личный кабинет</span>
+          </div>
+          <h1>Привет, {user?.email.split('@')[0]}!</h1>
+          <p>Управляйте вашими праздниками и гостями в одном месте</p>
         </div>
         <Link to="/create-event" className="btn btn-primary">
           <Plus size={18} /> Создать событие
