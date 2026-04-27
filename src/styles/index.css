@@ -604,6 +604,8 @@ select.input { cursor: pointer; }
   .lock-card { padding: 40px 24px; }
   .code-input { font-size: 1.8rem; }
   .event-hero-header { flex-direction: column; gap: 20px; }
+  .comment-form { flex-direction: column; }
+  .comment-form input { flex: none !important; width: 100% !important; }
 }
 
 @media (max-width: 480px) {

@@ -85,7 +85,7 @@ const CommentWall = ({ eventId, isAdmin }) => {
         ))}
       </div>
 
-      <div style={{display:'flex', gap:10, marginTop: 24}}>
+      <div className="comment-form" style={{display:'flex', gap:10, marginTop: 24}}>
         <input 
           className="input" 
           style={{flex:'0 0 160px'}} 
