@@ -5,15 +5,15 @@
 
 /* ===================== ROOT TOKENS ===================== */
 :root {
-  --bg:        #fdfdfd;
-  --bg2:       #f3f4f6;
-  --surface:   rgba(255,255,255,0.8);
-  --border:    rgba(0,0,0,0.06);
-  --accent:    #6c63ff;
-  --accent2:   #a78bfa;
-  --glow:      rgba(108,99,255,0.25);
-  --text:      #111827;
-  --muted:     #6b7280;
+  --bg:        #111827; /* Soft dark background */
+  --bg2:       #1f2937;
+  --surface:   rgba(255,255,255,0.05);
+  --border:    rgba(255,255,255,0.08);
+  --accent:    #818cf8;
+  --accent2:   #c084fc;
+  --glow:      rgba(129,140,248,0.25);
+  --text:      #f9fafb;
+  --muted:     #9ca3af;
   --radius:    18px;
   --radius-sm: 10px;
   --trans:     0.3s cubic-bezier(.4,0,.2,1);
@@ -21,25 +21,25 @@
   --serif:     'Playfair Display', serif;
 }
 [data-theme="wedding"] {
-  --accent:  #f43f5e;
-  --accent2: #fb7185;
-  --glow:    rgba(244,63,94,0.25);
-  --bg:      #fff1f2;
-  --bg2:     #ffe4e6;
+  --accent:  #fb7185;
+  --accent2: #fda4af;
+  --glow:    rgba(251,113,133,0.25);
+  --bg:      #1a151b;
+  --bg2:     #2b1d22;
 }
 [data-theme="birthday"] {
-  --accent:  #f59e0b;
-  --accent2: #fbbf24;
-  --glow:    rgba(245,158,11,0.25);
-  --bg:      #fffbeb;
-  --bg2:     #fef3c7;
+  --accent:  #fbbf24;
+  --accent2: #fcd34d;
+  --glow:    rgba(251,191,36,0.25);
+  --bg:      #1c1913;
+  --bg2:     #2b2416;
 }
 [data-theme="party"] {
-  --accent:  #8b5cf6;
-  --accent2: #c084fc;
-  --glow:    rgba(139,92,246,0.25);
-  --bg:      #faf5ff;
-  --bg2:     #f3e8ff;
+  --accent:  #38bdf8;
+  --accent2: #818cf8;
+  --glow:    rgba(56,189,248,0.25);
+  --bg:      #0f172a;
+  --bg2:     #1e293b;
 }
 
 /* ===================== BASE ===================== */
@@ -82,7 +82,7 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.1) 100%);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -116,7 +116,7 @@ body::before {
   color: var(--text);
 }
 .btn-ghost:hover {
-  background: rgba(0,0,0,0.04);
+  background: rgba(255,255,255,0.08);
   border-color: var(--accent);
   transform: translateY(-2px);
 }
@@ -124,7 +124,7 @@ body::before {
 /* ===================== INPUTS ===================== */
 .input {
   width: 100%;
-  background: rgba(0,0,0,0.02);
+  background: rgba(255,255,255,0.03);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 13px 16px;
@@ -137,7 +137,7 @@ body::before {
 .input:focus {
   border-color: var(--accent);
   box-shadow: 0 0 0 4px var(--glow);
-  background: rgba(0,0,0,0.04);
+  background: rgba(255,255,255,0.06);
 }
 .input::placeholder { color: var(--muted); }
 select.input { cursor: pointer; }
@@ -388,7 +388,7 @@ select.input { cursor: pointer; }
   border-radius: 100px;
   font-size: 0.9rem;
   font-weight: 600;
-  background: rgba(0,0,0,0.03);
+  background: rgba(255,255,255,0.05);
   border: 1px solid var(--border);
 }
 
@@ -432,7 +432,7 @@ select.input { cursor: pointer; }
 .rsvp-btn.active-yes   { border-color: #22c55e; background: rgba(34,197,94,0.1);  box-shadow: 0 0 0 4px rgba(34,197,94,0.2); }
 .rsvp-btn.active-no    { border-color: #ef4444; background: rgba(239,68,68,0.1);  box-shadow: 0 0 0 4px rgba(239,68,68,0.2); }
 .rsvp-btn.active-maybe { border-color: #f59e0b; background: rgba(245,158,11,0.1); box-shadow: 0 0 0 4px rgba(245,158,11,0.2); }
-.rsvp-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: rgba(0,0,0,0.04); }
+.rsvp-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; background: rgba(255,255,255,0.06); }
 
 /* ===================== LOCK SCREEN ===================== */
 .lock-screen {
@@ -470,7 +470,7 @@ select.input { cursor: pointer; }
   font-weight: 800; font-size: 0.9rem;
   flex-shrink: 0;
 }
-.comment-bubble { background: rgba(0,0,0,0.02); border: 1px solid var(--border); border-radius: 4px 16px 16px 16px; padding: 12px 16px; flex: 1; }
+.comment-bubble { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 4px 16px 16px 16px; padding: 12px 16px; flex: 1; }
 .comment-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 5px; }
 .comment-author { font-weight: 700; font-size: 0.88rem; }
 .comment-time   { font-size: 0.78rem; color: var(--muted); }
