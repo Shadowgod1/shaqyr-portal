@@ -1,18 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Send, User, Trash2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
-const CommentWall = ({ comments: initial = [], isAdmin }) => {
-  const [comments, setComments] = useState(initial.length ? initial : [
-    { author:'Айгерим', time:'Вчера', text:'Поздравляем! Желаем счастья и любви! 💕' },
-    { author:'Данияр', time:'2 ч. назад', text:'Ребята, мы так рады за вас! До встречи!' },
-  ]);
+const CommentWall = ({ eventId, isAdmin }) => {
+  const [comments, setComments] = useState([]);
   const [text, setText] = useState('');
   const [name, setName] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  const send = () => {
+  useEffect(() => {
+    if (eventId) fetchComments();
+  }, [eventId]);
+
+  const fetchComments = async () => {
+    const { data, error } = await supabase
+      .from('comments')
+      .select('*')
+      .eq('event_id', eventId)
+      .order('created_at', { ascending: true });
+    
+    if (data) setComments(data);
+    setLoading(false);
+  };
+
+  const send = async () => {
     if (!text.trim()) return;
-    setComments(c => [...c, { author: name || 'Гость', time: 'Только что', text }]);
-    setText(''); setName('');
+    const author = name.trim() || 'Гость';
+    
+    const { data, error } = await supabase
+      .from('comments')
+      .insert([{ 
+        event_id: eventId, 
+        author, 
+        content: text.trim() 
+      }])
+      .select();
+
+    if (data) {
+      setComments([...comments, data[0]]);
+      setText('');
+      setName('');
+    }
+  };
+
+  const deleteComment = async (id) => {
+    const { error } = await supabase.from('comments').delete().eq('id', id);
+    if (!error) {
+      setComments(comments.filter(c => c.id !== id));
+    }
   };
 
   return (
@@ -20,29 +55,57 @@ const CommentWall = ({ comments: initial = [], isAdmin }) => {
       <div className="section-title">
         <Send size={20} className="section-title-icon"/> Пожелания гостей
       </div>
+      
       <div className="comment-list">
-        {comments.map((c,i) => (
-          <div key={i} className="comment-item">
+        {loading ? (
+          <p style={{textAlign:'center', color:'var(--muted)'}}>Загрузка комментариев...</p>
+        ) : comments.length === 0 ? (
+          <p style={{textAlign:'center', color:'var(--muted)', padding: '20px 0'}}>Пока никто не оставил пожеланий. Будьте первыми!</p>
+        ) : comments.map((c) => (
+          <div key={c.id} className="comment-item">
             <div className="comment-avatar">{c.author[0]}</div>
             <div className="comment-bubble">
               <div className="comment-meta">
                 <span className="comment-author">{c.author}</span>
-                <span className="comment-time">{c.time}</span>
-                {isAdmin && <button onClick={()=>setComments(cs=>cs.filter((_,j)=>j!==i))} style={{marginLeft:'auto',background:'none',border:'none',color:'#ef4444',cursor:'pointer',display:'flex'}}><Trash2 size={14}/></button>}
+                <span className="comment-time">
+                  {new Date(c.created_at).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })}
+                </span>
+                {isAdmin && (
+                  <button 
+                    onClick={() => deleteComment(c.id)} 
+                    style={{marginLeft:'auto', background:'none', border:'none', color:'#ef4444', cursor:'pointer', display:'flex'}}
+                  >
+                    <Trash2 size={14}/>
+                  </button>
+                )}
               </div>
-              <p className="comment-text">{c.text}</p>
+              <p className="comment-text">{c.content}</p>
             </div>
           </div>
         ))}
       </div>
-      <div style={{display:'flex', gap:10, marginBottom:10}}>
-        <input className="input" style={{flex:'0 0 160px'}} placeholder="Ваше имя" value={name} onChange={e=>setName(e.target.value)}/>
-        <input className="input" placeholder="Напишите поздравление..." value={text} onChange={e=>setText(e.target.value)} onKeyDown={e=>e.key==='Enter'&&send()}/>
-        <button className="btn btn-primary" onClick={send} style={{padding:'0 20px',flexShrink:0}}>
+
+      <div style={{display:'flex', gap:10, marginTop: 24}}>
+        <input 
+          className="input" 
+          style={{flex:'0 0 160px'}} 
+          placeholder="Ваше имя" 
+          value={name} 
+          onChange={e=>setName(e.target.value)}
+        />
+        <input 
+          className="input" 
+          placeholder="Напишите поздравление..." 
+          value={text} 
+          onChange={e=>setText(e.target.value)} 
+          onKeyDown={e=>e.key==='Enter' && send()}
+        />
+        <button className="btn btn-primary" onClick={send} style={{padding:'0 20px', flexShrink:0}}>
           <Send size={15}/>
         </button>
       </div>
     </div>
   );
 };
+
 export default CommentWall;

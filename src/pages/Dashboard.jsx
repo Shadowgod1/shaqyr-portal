@@ -9,8 +9,10 @@ const typeBadge = { wedding: 'badge-wedding', birthday: 'badge-birthday', party:
 const Dashboard = () => {
   const { events } = useEvents();
 
-  const copyCode = (code) => {
-    navigator.clipboard.writeText(code);
+  const copyLink = (code) => {
+    const link = `${window.location.origin}/event/${code}`;
+    navigator.clipboard.writeText(link);
+    alert('Ссылка скопирована!');
   };
 
   return (
@@ -45,7 +47,7 @@ const Dashboard = () => {
                   {typeLabel[event.type]}
                 </span>
                 <div className="event-card-actions">
-                  <button className="icon-btn" title="Копировать код" onClick={() => copyCode(event.code)}>
+                  <button className="icon-btn" title="Копировать ссылку" onClick={() => copyLink(event.code)}>
                     <Copy size={15} />
                   </button>
                   <Link to={`/event/${event.code}`} className="icon-btn" title="Открыть страницу">
