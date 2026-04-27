@@ -34,7 +34,7 @@ const CreateEvent = () => {
           {/* Type selector */}
           <div style={{marginBottom:28}}>
             <div className="form-label" style={{marginBottom:12}}>Тип события</div>
-            <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:12}}>
+            <div className="type-grid" style={{display:'grid', gap:12}}>
               {themes.map(t => (
                 <button
                   key={t.value}
