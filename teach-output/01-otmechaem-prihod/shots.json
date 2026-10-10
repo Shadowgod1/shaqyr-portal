@@ -1,0 +1,541 @@
+{
+ "baseUrl": "http://127.0.0.1:4174",
+ "viewport": {
+  "w": 1440,
+  "h": 810
+ },
+ "scale": 2,
+ "steps": [
+  {
+   "goto": "/login"
+  },
+  {
+   "eval": "localStorage.setItem('sulu_token','demo-token');localStorage.setItem('sulu_user',\"{\\\"id\\\": \\\"u-admin\\\", \\\"fullName\\\": \\\"Жанар Бекова\\\", \\\"role\\\": \\\"OWNER\\\", \\\"clinicId\\\": \\\"c1\\\", \\\"clinicName\\\": \\\"Sulu Aesthetic\\\", \\\"effectiveRole\\\": {\\\"id\\\": \\\"OWNER\\\", \\\"type\\\": \\\"system\\\", \\\"label\\\": \\\"Владелец\\\", \\\"workspace\\\": \\\"owner\\\", \\\"permissions\\\": {\\\"schedule\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"finance\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"patients\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"medical\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"safety\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"analytics\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"staff\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"communications\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"waitlist\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"ownerAnalytics\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"sales\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"bonuses\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"leads\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"inventory\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"promotions\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"services\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"documents\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"settings\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"integrations\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"billing\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"], \\\"assistant\\\": [\\\"view\\\", \\\"create\\\", \\\"edit\\\", \\\"delete\\\"]}}, \\\"capabilities\\\": {\\\"canViewMyWork\\\": true, \\\"canManageWork\\\": true}, \\\"portalRollout\\\": {\\\"portal.v2.shell\\\": true, \\\"portal.v2.density\\\": true, \\\"portal.v2.primitives\\\": true, \\\"workflow.core\\\": true, \\\"workflow.myWork\\\": true, \\\"workflow.approvals\\\": true, \\\"customer.subject\\\": true, \\\"communications.v2\\\": true, \\\"schedule.v2\\\": true, \\\"clinical.execution\\\": true, \\\"commercial.offer\\\": true, \\\"finance.ledger\\\": true, \\\"supply.v2\\\": true, \\\"documents.v2\\\": true, \\\"network.v2\\\": true, \\\"adminCenter.v2\\\": true, \\\"people.v2\\\": true, \\\"marketing.v2\\\": true}, \\\"workflowWorkspace\\\": {\\\"roleKey\\\": \\\"OW\\\", \\\"home\\\": \\\"/admin/workspace/owner\\\", \\\"scope\\\": \\\"clinic\\\", \\\"views\\\": [\\\"my\\\", \\\"team\\\", \\\"handoffs\\\", \\\"approvals\\\", \\\"escalations\\\"]}, \\\"entitlements\\\": {\\\"aiAssistant\\\": true, \\\"procedureSafety\\\": true, \\\"aiCrossNetwork\\\": true}}\");localStorage.setItem('sulu-day-layout','columns');"
+  },
+  {
+   "goto": "/admin/schedule"
+  },
+  {
+   "wait": 2500
+  },
+  {
+   "shot": "board",
+   "boxes": {
+    "card": ".sv2-appt[data-appointment-id='a3']",
+    "stat": "text=Пришли >> xpath=..",
+    "now": ".sv2-board"
+   }
+  },
+  {
+   "click": ".sv2-appt[data-appointment-id='a3']"
+  },
+  {
+   "waitFor": "[role=menu]"
+  },
+  {
+   "wait": 400
+  },
+  {
+   "shot": "menu",
+   "boxes": {
+    "card": ".sv2-appt[data-appointment-id='a3']",
+    "menu": "[role=menu]",
+    "arrived": "[role=menu] [role=menuitem]:has-text('Пришёл')"
+   }
+  },
+  {
+   "eval": "(()=>{const A={\"doctors\": [{\"id\": \"d1\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"косметолог\", \"profile\": {\"fullName\": \"Динара Сапарова\"}}, {\"id\": \"d2\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"дерматолог\", \"profile\": {\"fullName\": \"Алия Мухамедова\"}}, {\"id\": \"d3\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"массажист\", \"profile\": {\"fullName\": \"Ержан Касымов\"}}], \"rooms\": [], \"appointments\": [{\"id\": \"a1\", \"doctorId\": \"d1\", \"doctor\": {\"id\": \"d1\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"косметолог\", \"profile\": {\"fullName\": \"Динара Сапарова\"}}, \"status\": \"COMPLETED\", \"version\": 3, \"startTime\": \"2026-10-10T14:00:00Z\", \"endTime\": \"2026-10-10T15:00:00Z\", \"patient\": {\"id\": \"p-a1\", \"fullName\": \"Мадина Ахметова\"}, \"service\": {\"id\": \"s1\", \"name\": \"Чистка лица комбинированная\", \"durationMinutes\": 60}, \"isPaid\": true}, {\"id\": \"a2\", \"doctorId\": \"d1\", \"doctor\": {\"id\": \"d1\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"косметолог\", \"profile\": {\"fullName\": \"Динара Сапарова\"}}, \"status\": \"COMPLETED\", \"version\": 3, \"startTime\": \"2026-10-10T16:00:00Z\", \"endTime\": \"2026-10-10T16:45:00Z\", \"patient\": {\"id\": \"p-a2\", \"fullName\": \"Сауле Жумабаева\"}, \"service\": {\"id\": \"s2\", \"name\": \"Биоревитализация\", \"durationMinutes\": 45}, \"isPaid\": true}, {\"id\": \"a3\", \"doctorId\": \"d1\", \"doctor\": {\"id\": \"d1\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"косметолог\", \"profile\": {\"fullName\": \"Динара Сапарова\"}}, \"status\": \"ARRIVED\", \"version\": 4, \"startTime\": \"2026-10-10T20:30:00Z\", \"endTime\": \"2026-10-10T21:15:00Z\", \"patient\": {\"id\": \"p-a3\", \"fullName\": \"Айгерим Нурланова\"}, \"service\": {\"id\": \"s2\", \"name\": \"Биоревитализация\", \"durationMinutes\": 45}, \"isPaid\": false}, {\"id\": \"a4\", \"doctorId\": \"d2\", \"doctor\": {\"id\": \"d2\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"дерматолог\", \"profile\": {\"fullName\": \"Алия Мухамедова\"}}, \"status\": \"COMPLETED\", \"version\": 3, \"startTime\": \"2026-10-10T15:00:00Z\", \"endTime\": \"2026-10-10T15:30:00Z\", \"patient\": {\"id\": \"p-a4\", \"fullName\": \"Дана Исмаилова\"}, \"service\": {\"id\": \"s6\", \"name\": \"Консультация косметолога\", \"durationMinutes\": 30}, \"isPaid\": true}, {\"id\": \"a5\", \"doctorId\": \"d2\", \"doctor\": {\"id\": \"d2\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"дерматолог\", \"profile\": {\"fullName\": \"Алия Мухамедова\"}}, \"status\": \"COMPLETED\", \"version\": 3, \"startTime\": \"2026-10-10T18:00:00Z\", \"endTime\": \"2026-10-10T18:30:00Z\", \"patient\": {\"id\": \"p-a5\", \"fullName\": \"Камила Серикова\"}, \"service\": {\"id\": \"s3\", \"name\": \"Ботулинотерапия (зона лба)\", \"durationMinutes\": 30}, \"isPaid\": true}, {\"id\": \"a6\", \"doctorId\": \"d2\", \"doctor\": {\"id\": \"d2\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"дерматолог\", \"profile\": {\"fullName\": \"Алия Мухамедова\"}}, \"status\": \"SCHEDULED\", \"version\": 3, \"startTime\": \"2026-10-10T21:00:00Z\", \"endTime\": \"2026-10-10T21:40:00Z\", \"patient\": {\"id\": \"p-a6\", \"fullName\": \"Асель Тулегенова\"}, \"service\": {\"id\": \"s5\", \"name\": \"Пилинг PRX-T33\", \"durationMinutes\": 40}, \"isPaid\": false}, {\"id\": \"a7\", \"doctorId\": \"d3\", \"doctor\": {\"id\": \"d3\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"массажист\", \"profile\": {\"fullName\": \"Ержан Касымов\"}}, \"status\": \"COMPLETED\", \"version\": 3, \"startTime\": \"2026-10-10T17:00:00Z\", \"endTime\": \"2026-10-10T18:00:00Z\", \"patient\": {\"id\": \"p-a7\", \"fullName\": \"Жанна Омарова\"}, \"service\": {\"id\": \"s4\", \"name\": \"Массаж лица буккальный\", \"durationMinutes\": 60}, \"isPaid\": true}, {\"id\": \"a8\", \"doctorId\": \"d3\", \"doctor\": {\"id\": \"d3\", \"clinicId\": \"c1\", \"capacity\": 1, \"specialization\": \"массажист\", \"profile\": {\"fullName\": \"Ержан Касымов\"}}, \"status\": \"CONFIRMED\", \"version\": 3, \"startTime\": \"2026-10-10T19:30:00Z\", \"endTime\": \"2026-10-10T20:30:00Z\", \"patient\": {\"id\": \"p-a8\", \"fullName\": \"Гульнара Абенова\"}, \"service\": {\"id\": \"s4\", \"name\": \"Массаж лица буккальный\", \"durationMinutes\": 60}, \"isPaid\": false}], \"expectedLeads\": [], \"workingHours\": {\"mon\": \"09:00-22:00\", \"tue\": \"09:00-22:00\", \"wed\": \"09:00-22:00\", \"thu\": \"09:00-22:00\", \"fri\": \"09:00-22:00\", \"sat\": \"09:00-22:00\", \"sun\": \"09:00-22:00\"}};const f=window.fetch;window.fetch=(u,o)=>String(u).includes('/api/admin/schedule')?Promise.resolve(new Response(JSON.stringify(A),{status:200,headers:{'Content-Type':'application/json'}})):f(u,o)})()"
+  },
+  {
+   "click": "[role=menu] [role=menuitem]:has-text('Пришёл')"
+  },
+  {
+   "wait": 1500
+  },
+  {
+   "shot": "arrived",
+   "boxes": {
+    "card": ".sv2-appt[data-appointment-id='a3']",
+    "stat": "text=Пришли >> xpath=..",
+    "toast": "[data-sonner-toast]"
+   }
+  }
+ ],
+ "routes": {
+  "http://127.0.0.1:4174/api/**": {
+   "status": 404,
+   "json": {
+    "ok": false,
+    "error": {
+     "code": "NOT_FOUND",
+     "message": "Нет данных"
+    }
+   }
+  },
+  "http://127.0.0.1:4174/socket.io/**": {
+   "status": 404,
+   "body": ""
+  },
+  "http://127.0.0.1:4174/api/auth/me": {
+   "json": {
+    "id": "u-admin",
+    "fullName": "Жанар Бекова",
+    "role": "OWNER",
+    "clinicId": "c1",
+    "clinicName": "Sulu Aesthetic",
+    "effectiveRole": {
+     "id": "OWNER",
+     "type": "system",
+     "label": "Владелец",
+     "workspace": "owner",
+     "permissions": {
+      "schedule": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "finance": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "patients": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "medical": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "safety": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "analytics": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "staff": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "communications": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "waitlist": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "ownerAnalytics": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "sales": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "bonuses": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "leads": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "inventory": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "promotions": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "services": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "documents": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "settings": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "integrations": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "billing": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ],
+      "assistant": [
+       "view",
+       "create",
+       "edit",
+       "delete"
+      ]
+     }
+    },
+    "capabilities": {
+     "canViewMyWork": true,
+     "canManageWork": true
+    },
+    "portalRollout": {
+     "portal.v2.shell": true,
+     "portal.v2.density": true,
+     "portal.v2.primitives": true,
+     "workflow.core": true,
+     "workflow.myWork": true,
+     "workflow.approvals": true,
+     "customer.subject": true,
+     "communications.v2": true,
+     "schedule.v2": true,
+     "clinical.execution": true,
+     "commercial.offer": true,
+     "finance.ledger": true,
+     "supply.v2": true,
+     "documents.v2": true,
+     "network.v2": true,
+     "adminCenter.v2": true,
+     "people.v2": true,
+     "marketing.v2": true
+    },
+    "workflowWorkspace": {
+     "roleKey": "OW",
+     "home": "/admin/workspace/owner",
+     "scope": "clinic",
+     "views": [
+      "my",
+      "team",
+      "handoffs",
+      "approvals",
+      "escalations"
+     ]
+    },
+    "entitlements": {
+     "aiAssistant": true,
+     "procedureSafety": true,
+     "aiCrossNetwork": true
+    }
+   }
+  },
+  "http://127.0.0.1:4174/api/admin/schedule**": {
+   "json": {
+    "doctors": [
+     {
+      "id": "d1",
+      "clinicId": "c1",
+      "capacity": 1,
+      "specialization": "косметолог",
+      "profile": {
+       "fullName": "Динара Сапарова"
+      }
+     },
+     {
+      "id": "d2",
+      "clinicId": "c1",
+      "capacity": 1,
+      "specialization": "дерматолог",
+      "profile": {
+       "fullName": "Алия Мухамедова"
+      }
+     },
+     {
+      "id": "d3",
+      "clinicId": "c1",
+      "capacity": 1,
+      "specialization": "массажист",
+      "profile": {
+       "fullName": "Ержан Касымов"
+      }
+     }
+    ],
+    "rooms": [],
+    "appointments": [
+     {
+      "id": "a1",
+      "doctorId": "d1",
+      "doctor": {
+       "id": "d1",
+       "clinicId": "c1",
+       "capacity": 1,
+       "specialization": "косметолог",
+       "profile": {
+        "fullName": "Динара Сапарова"
+       }
+      },
+      "status": "COMPLETED",
+      "version": 3,
+      "startTime": "2026-10-10T14:00:00Z",
+      "endTime": "2026-10-10T15:00:00Z",
+      "patient": {
+       "id": "p-a1",
+       "fullName": "Мадина Ахметова"
+      },
+      "service": {
+       "id": "s1",
+       "name": "Чистка лица комбинированная",
+       "durationMinutes": 60
+      },
+      "isPaid": true
+     },
+     {
+      "id": "a2",
+      "doctorId": "d1",
+      "doctor": {
+       "id": "d1",
+       "clinicId": "c1",
+       "capacity": 1,
+       "specialization": "косметолог",
+       "profile": {
+        "fullName": "Динара Сапарова"
+       }
+      },
+      "status": "COMPLETED",
+      "version": 3,
+      "startTime": "2026-10-10T16:00:00Z",
+      "endTime": "2026-10-10T16:45:00Z",
+      "patient": {
+       "id": "p-a2",
+       "fullName": "Сауле Жумабаева"
+      },
+      "service": {
+       "id": "s2",
+       "name": "Биоревитализация",
+       "durationMinutes": 45
+      },
+      "isPaid": true
+     },
+     {
+      "id": "a3",
+      "doctorId": "d1",
+      "doctor": {
+       "id": "d1",
+       "clinicId": "c1",
+       "capacity": 1,
+       "specialization": "косметолог",
+       "profile": {
+        "fullName": "Динара Сапарова"
+       }
+      },
+      "status": "CONFIRMED",
+      "version": 3,
+      "startTime": "2026-10-10T20:30:00Z",
+      "endTime": "2026-10-10T21:15:00Z",
+      "patient": {
+       "id": "p-a3",
+       "fullName": "Айгерим Нурланова"
+      },
+      "service": {
+       "id": "s2",
+       "name": "Биоревитализация",
+       "durationMinutes": 45
+      },
+      "isPaid": false
+     },
+     {
+      "id": "a4",
+      "doctorId": "d2",
+      "doctor": {
+       "id": "d2",
+       "clinicId": "c1",
+       "capacity": 1,
+       "specialization": "дерматолог",
+       "profile": {
+        "fullName": "Алия Мухамедова"
+       }
+      },
+      "status": "COMPLETED",
+      "version": 3,
+      "startTime": "2026-10-10T15:00:00Z",
+      "endTime": "2026-10-10T15:30:00Z",
+      "patient": {
+       "id": "p-a4",
+       "fullName": "Дана Исмаилова"
+      },
+      "service": {
+       "id": "s6",
+       "name": "Консультация косметолога",
+       "durationMinutes": 30
+      },
+      "isPaid": true
+     },
+     {
+      "id": "a5",
+      "doctorId": "d2",
+      "doctor": {
+       "id": "d2",
+       "clinicId": "c1",
+       "capacity": 1,
+       "specialization": "дерматолог",
+       "profile": {
+        "fullName": "Алия Мухамедова"
+       }
+      },
+      "status": "COMPLETED",
+      "version": 3,
+      "startTime": "2026-10-10T18:00:00Z",
+      "endTime": "2026-10-10T18:30:00Z",
+      "patient": {
+       "id": "p-a5",
+       "fullName": "Камила Серикова"
+      },
+      "service": {
+       "id": "s3",
+       "name": "Ботулинотерапия (зона лба)",
+       "durationMinutes": 30
+      },
+      "isPaid": true
+     },
+     {
+      "id": "a6",
+      "doctorId": "d2",
+      "doctor": {
+       "id": "d2",
+       "clinicId": "c1",
+       "capacity": 1,
+       "specialization": "дерматолог",
+       "profile": {
+        "fullName": "Алия Мухамедова"
+       }
+      },
+      "status": "SCHEDULED",
+      "version": 3,
+      "startTime": "2026-10-10T21:00:00Z",
+      "endTime": "2026-10-10T21:40:00Z",
+      "patient": {
+       "id": "p-a6",
+       "fullName": "Асель Тулегенова"
+      },
+      "service": {
+       "id": "s5",
+       "name": "Пилинг PRX-T33",
+       "durationMinutes": 40
+      },
+      "isPaid": false
+     },
+     {
+      "id": "a7",
+      "doctorId": "d3",
+      "doctor": {
+       "id": "d3",
+       "clinicId": "c1",
+       "capacity": 1,
+       "specialization": "массажист",
+       "profile": {
+        "fullName": "Ержан Касымов"
+       }
+      },
+      "status": "COMPLETED",
+      "version": 3,
+      "startTime": "2026-10-10T17:00:00Z",
+      "endTime": "2026-10-10T18:00:00Z",
+      "patient": {
+       "id": "p-a7",
+       "fullName": "Жанна Омарова"
+      },
+      "service": {
+       "id": "s4",
+       "name": "Массаж лица буккальный",
+       "durationMinutes": 60
+      },
+      "isPaid": true
+     },
+     {
+      "id": "a8",
+      "doctorId": "d3",
+      "doctor": {
+       "id": "d3",
+       "clinicId": "c1",
+       "capacity": 1,
+       "specialization": "массажист",
+       "profile": {
+        "fullName": "Ержан Касымов"
+       }
+      },
+      "status": "CONFIRMED",
+      "version": 3,
+      "startTime": "2026-10-10T19:30:00Z",
+      "endTime": "2026-10-10T20:30:00Z",
+      "patient": {
+       "id": "p-a8",
+       "fullName": "Гульнара Абенова"
+      },
+      "service": {
+       "id": "s4",
+       "name": "Массаж лица буккальный",
+       "durationMinutes": 60
+      },
+      "isPaid": false
+     }
+    ],
+    "expectedLeads": [],
+    "workingHours": {
+     "mon": "09:00-22:00",
+     "tue": "09:00-22:00",
+     "wed": "09:00-22:00",
+     "thu": "09:00-22:00",
+     "fri": "09:00-22:00",
+     "sat": "09:00-22:00",
+     "sun": "09:00-22:00"
+    }
+   }
+  },
+  "http://127.0.0.1:4174/api/admin/appointments/a3/transitions": {
+   "json": {
+    "ok": true,
+    "appointment": {
+     "id": "a3",
+     "status": "ARRIVED",
+     "version": 4
+    }
+   }
+  },
+  "http://127.0.0.1:4174/api/appointments/a3/status": {
+   "json": {
+    "ok": true
+   }
+  }
+ }
+}

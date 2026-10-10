@@ -1,0 +1,13 @@
+{
+  "series": "SuluSystems — обучение",
+  "audience": "user",
+  "voice": "dmitri",
+  "theme": { "accent": "#1a4a3a" },
+  "run": { "start": "npx vite --host 127.0.0.1 --port 4174 (env: .env.local)", "url": "http://127.0.0.1:4174/admin/schedule", "login": "localStorage sulu_token + sulu_user, API — фикстуры" },
+  "episodes": [
+    { "n": 1, "slug": "01-otmechaem-prihod", "title": "Отмечаем приход пациента",
+      "goal": "найти визит в расписании и отметить, что пациент пришёл",
+      "features": ["schedule-day", "appointment-arrive"], "pages": ["/admin/schedule"],
+      "estimate": 45, "status": "done", "duration": 32 }
+  ]
+}
