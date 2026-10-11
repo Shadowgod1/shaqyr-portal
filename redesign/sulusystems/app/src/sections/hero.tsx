@@ -6,7 +6,7 @@ import { Tilt } from "@/components/sulu/tilt"
 import { Reveal, fadeUp, stagger } from "@/components/sulu/reveal"
 import { cn } from "@/lib/utils"
 import { SITE, hero } from "@/content"
-import heroImg from "@/assets/sulu/landing-hero.webp"
+import heroImg from "@/assets/sulu/hero-clinic-dashboard.webp"
 import { requestDemo } from "@/lib/plan"
 
 const HeroScene = lazy(() => import("@/three/hero-scene").then((m) => ({ default: m.HeroScene })))
@@ -76,14 +76,14 @@ export function Hero() {
               initial={{ opacity: 0, y: 40, rotateX: 18, rotateY: -22 }}
               animate={{ opacity: 1, y: 0, rotateX: 0, rotateY: 0 }}
               transition={{ delay: 0.35, duration: 1.1, ease: [0.24, 1, 0.4, 1] }}
-              className="perspective absolute inset-[16%]"
+              className="perspective absolute inset-x-[4%] inset-y-[21%]"
             >
               <div className="h-full animate-[sulu-float_7s_ease-in-out_infinite]">
                 <Tilt max={12} lift={40} className="h-full">
                   <img
                     src={heroImg}
                     alt={hero.imageAlt}
-                    width={1024}
+                    width={1536}
                     height={1024}
                     fetchPriority="high"
                     className="size-full border border-[color:var(--rule-strong)] object-cover shadow-[0_40px_80px_-30px_rgba(6,46,34,0.55)]"

@@ -23,7 +23,7 @@ export const hero = {
     "Без привязки карты",
     "100% соответствие законодательству РК",
   ],
-  imageAlt: "SuluSystems ERP",
+  imageAlt: "SuluSystems ERP на планшете на ресепшене клиники: расписание и аналитика",
 }
 
 export const erp = {
