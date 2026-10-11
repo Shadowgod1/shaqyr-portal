@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "recipe": "astryx-oklch-v1",
+  "candidateSha256": "e284211502b989043534cf8cde96c60f1dd731a4d531518232ab990594376ae6",
+  "preview": {
+    "version": "palette-preview-v1",
+    "sha256": "3477778887cd3fb0a9890826eca4e6d373084dd845b2dfaa8d0afb748eb6ab35"
+  },
+  "request": {
+    "recipe": "astryx-oklch-v1",
+    "vibrancy": 50,
+    "neutralProfile": "neutral-v1",
+    "modeStrategy": "light-and-dark",
+    "stops": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35,
+      40,
+      45,
+      50,
+      55,
+      60,
+      65,
+      70,
+      75,
+      80,
+      85,
+      90,
+      95,
+      100
+    ],
+    "families": [
+      {
+        "id": "emerald",
+        "name": "emerald",
+        "seed": "#173f33",
+        "kind": "chromatic",
+        "anchors": []
+      },
+      {
+        "id": "gold",
+        "name": "gold",
+        "seed": "#b8966e",
+        "kind": "chromatic",
+        "anchors": []
+      },
+      {
+        "id": "cream",
+        "name": "cream",
+        "seed": "#f8f5ef",
+        "kind": "chromatic",
+        "anchors": []
+      }
+    ]
+  },
+  "diagnostics": {
+    "families": {
+      "emerald": {
+        "light": {
+          "monotonic": true,
+          "minimumAdjacentDeltaE": 4.1089395444395755,
+          "maximumAdjacentDeltaE": 18.139952454302026,
+          "maximumHueDrift": 2.4863343281199377,
+          "hueIdentityRisk": null,
+          "gamutMappedStops": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40,
+            45,
+            100
+          ],
+          "anchors": []
+        },
+        "dark": {
+          "monotonic": true,
+          "minimumAdjacentDeltaE": 4.1089395444395755,
+          "maximumAdjacentDeltaE": 18.139952454302026,
+          "maximumHueDrift": 3.169810976450435,
+          "hueIdentityRisk": null,
+          "gamutMappedStops": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            100
+          ],
+          "anchors": []
+        }
+      },
+      "gold": {
+        "light": {
+          "monotonic": true,
+          "minimumAdjacentDeltaE": 4.235423001709542,
+          "maximumAdjacentDeltaE": 18.308472915927197,
+          "maximumHueDrift": 9.6830153049292,
+          "hueIdentityRisk": null,
+          "gamutMappedStops": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40,
+            45,
+            50,
+            90,
+            95,
+            100
+          ],
+          "anchors": []
+        },
+        "dark": {
+          "monotonic": true,
+          "minimumAdjacentDeltaE": 4.230132628080434,
+          "maximumAdjacentDeltaE": 18.308472915927197,
+          "maximumHueDrift": 10.242943860247067,
+          "hueIdentityRisk": null,
+          "gamutMappedStops": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40,
+            90,
+            95,
+            100
+          ],
+          "anchors": []
+        }
+      },
+      "cream": {
+        "light": {
+          "monotonic": true,
+          "minimumAdjacentDeltaE": 4.094399788824307,
+          "maximumAdjacentDeltaE": 18.01398838952642,
+          "maximumHueDrift": 9.269482618403742,
+          "hueIdentityRisk": null,
+          "gamutMappedStops": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            35,
+            40,
+            45,
+            95,
+            100
+          ],
+          "anchors": []
+        },
+        "dark": {
+          "monotonic": true,
+          "minimumAdjacentDeltaE": 4.206201223050918,
+          "maximumAdjacentDeltaE": 18.01398838952642,
+          "maximumHueDrift": 9.12934240505848,
+          "hueIdentityRisk": null,
+          "gamutMappedStops": [
+            5,
+            10,
+            15,
+            20,
+            25,
+            30,
+            95,
+            100
+          ],
+          "anchors": []
+        }
+      }
+    },
+    "coordination": [
+      {
+        "mode": "light",
+        "stop": 50,
+        "closestFamilies": [
+          "gold",
+          "cream"
+        ],
+        "minimumFamilyDeltaE": 3.1365182650321164,
+        "strongestFamily": "gold",
+        "weakestFamily": "emerald",
+        "chromaRatio": 1.1623873776748364
+      },
+      {
+        "mode": "dark",
+        "stop": 50,
+        "closestFamilies": [
+          "gold",
+          "cream"
+        ],
+        "minimumFamilyDeltaE": 3.0086918701909275,
+        "strongestFamily": "gold",
+        "weakestFamily": "emerald",
+        "chromaRatio": 1.2632038668705334
+      }
+    ]
+  }
+}

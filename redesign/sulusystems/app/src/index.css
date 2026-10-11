@@ -1,0 +1,231 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/golos-text";
+@import "@fontsource/playfair-display/500.css";
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/500-italic.css";
+
+@custom-variant dark (&:is([data-style="night"] *));
+
+/*
+ * SuluSystems palette, kept exactly from sulusystems.kz (landing CSS vars):
+ *   --c-bg-main #f8f5ef · --c-emerald #173f33 · --c-emerald-light #ebf4f0 · --c-gold #b8966e
+ *   --c-text-main #111827 · --c-border #eae6dc · --c-medical-red #c0392b · --c-amber #d97706
+ *   theme-color #064e3b · favicon #1a4a3a · muted #6b7280 · teal #0f766e
+ * Deeper emerald shades for the "night" style come from the Astryx tonal ramp
+ * (src/theme/astryx/sulu.palette.json, seed #173f33).
+ * Motion durations/easing are Astryx motion tokens.
+ */
+@theme inline {
+  --font-sans: "Inter Variable", "Golos Text Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-heading: var(--heading-font);
+  --font-golos: "Golos Text Variable", system-ui, sans-serif;
+
+  --color-emerald: var(--sulu-emerald);
+  --color-emerald-deep: var(--sulu-emerald-deep);
+  --color-emerald-light: var(--sulu-emerald-light);
+  --color-gold: var(--sulu-gold);
+  --color-cream: var(--sulu-cream);
+  --color-medical-red: var(--sulu-red);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  --ease-standard: cubic-bezier(0.24, 1, 0.4, 1);
+}
+
+:root {
+  /* Astryx motion tokens */
+  --duration-fast: 175ms;
+  --duration-medium: 410ms;
+  --duration-slow: 975ms;
+  --ease-standard: cubic-bezier(0.24, 1, 0.4, 1);
+
+  --sulu-emerald: #173f33;
+  --sulu-emerald-deep: #064e3b;
+  --sulu-emerald-light: #ebf4f0;
+  --sulu-gold: #b8966e;
+  --sulu-cream: #f8f5ef;
+  --sulu-red: #c0392b;
+}
+
+/* Style 1 — «Классика»: the original look (cream ground, emerald, Playfair). */
+:root,
+[data-style="classic"] {
+  --heading-font: "Playfair Display", Georgia, serif;
+  --background: #f8f5ef;
+  --surface: #ffffff;
+  --surface-2: #f6f4ef;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: #173f33;
+  --primary-foreground: #ffffff;
+  --secondary: #ebf4f0;
+  --secondary-foreground: #173f33;
+  --muted: #f6f4ef;
+  --muted-foreground: #5b6270; /* #6b7280 nudged to 4.5:1 on cream */
+  --accent: #ebf4f0;
+  --accent-foreground: #173f33;
+  --destructive: #c0392b;
+  --border: #eae6dc;
+  --input: #eae6dc;
+  --ring: #b8966e;
+  --radius: 1rem;
+  --glow: rgba(184, 150, 110, 0.35);
+  --kicker: #7d6243; /* gold #b8966e darkened for 4.5:1 on cream */
+}
+
+/* Style 2 — «Изумрудная ночь»: same palette inverted — deep emerald ground, cream text, gold accents. */
+[data-style="night"] {
+  --heading-font: "Playfair Display", Georgia, serif;
+  --background: #002318;
+  --surface: #062e22;
+  --surface-2: #0a3a2c;
+  --foreground: #f8f5ef;
+  --card: #073326;
+  --card-foreground: #f8f5ef;
+  --popover: #073326;
+  --popover-foreground: #f8f5ef;
+  --primary: #b8966e;
+  --primary-foreground: #002318;
+  --secondary: #173f33;
+  --secondary-foreground: #f8f5ef;
+  --muted: #0a3a2c;
+  --muted-foreground: #a0d4c1;
+  --accent: #173f33;
+  --accent-foreground: #f8f5ef;
+  --destructive: #e46a5c;
+  --border: rgba(248, 245, 239, 0.12);
+  --input: rgba(248, 245, 239, 0.18);
+  --ring: #b8966e;
+  --radius: 1.25rem;
+  --glow: rgba(184, 150, 110, 0.5);
+  --kicker: #b8966e;
+}
+
+/* Style 3 — «Клиника»: clinical white surface, emerald + mint, Golos Text headings. */
+[data-style="clinic"] {
+  --heading-font: "Golos Text Variable", system-ui, sans-serif;
+  --background: #ffffff;
+  --surface: #f8f5ef;
+  --surface-2: #ebf4f0;
+  --foreground: #111827;
+  --card: #ffffff;
+  --card-foreground: #111827;
+  --popover: #ffffff;
+  --popover-foreground: #111827;
+  --primary: #064e3b;
+  --primary-foreground: #ffffff;
+  --secondary: #ebf4f0;
+  --secondary-foreground: #064e3b;
+  --muted: #ebf4f0;
+  --muted-foreground: #4b5563;
+  --accent: #ebf4f0;
+  --accent-foreground: #064e3b;
+  --destructive: #c0392b;
+  --border: #e3ebe7;
+  --input: #d5e2dc;
+  --ring: #0f766e;
+  --radius: 0.5rem;
+  --glow: rgba(15, 118, 110, 0.25);
+  --kicker: #0f766e;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    transition: background-color var(--duration-medium) var(--ease-standard), color var(--duration-medium) var(--ease-standard);
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--heading-font);
+    text-wrap: balance;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-sulu {
+    width: 100%;
+    max-width: 1200px; /* --l-max-width from the original */
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 768px) {
+    .container-sulu { padding-inline: 32px; }
+  }
+  .kicker {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--kicker);
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.05;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  /* 3D helpers */
+  .preserve-3d { transform-style: preserve-3d; }
+  .backface-hidden { backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+  .perspective { perspective: 1200px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

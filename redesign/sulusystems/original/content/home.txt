@@ -1,0 +1,145 @@
+SuluSystems
+Для когоВозможностиТарифыFAQ
+Вход
+Попробовать бесплатно
+Частые вопросы
+У нас уже есть база в другой системе (1C, Excel, Yclients, Bitrix24). Как перейти?
+
+На тарифах «Бизнес» и «Enterprise» наша инженерная команда бесплатно переносит все данные (пациентов, историю визитов, депозиты, складские остатки) за 48 часов без остановки приемов в клинике.
+
+Чем SuluSystems отличается от обычных CRM для записи?
+Что если у нас небольшой кабинет или 1–2 специалиста?
+Сколько времени занимает внедрение ERP-системы?
+Можно ли отказаться от подписки или заморозить аккаунт?
+Где хранятся персональные данные пациентов и безопасно ли это?
+Как работает автоматический документооборот (DocFactory)?
+Есть ли мобильное приложение для пациентов и врачей?
+Что умеет ИИ-ассистент «Сулу» для руководителя?
+Попробуйте SuluSystems
+бесплатно для своей компании
+
+5 аккаунтов на Free навсегда. Или 14 дней «Бизнес» — без привязки карты.
+
+Создать аккаунт
+Поговорить с продавцом
+Забронировать аудит и демо
+
+Покажем систему на процессах вашей клиники. Перенесем данные за 48 часов без остановки приемов.
+
+Ваше имя
+Телефон
+Название клиники или центра
+Записаться на персональное демо
+SuluSystems
+
+Медицинская ERP-система для клиник и сетей.
+
+ИП IT FUSION
+
+БИН/ИИН: 000329550484
+
+Адрес: РК, ВКО, Усть-Каменогорск, 92, 59
+
+Телефон: +77764290300
+
+Email: info@itfusion.kz
+
+Наши сервера · Шифрование
+
+ПРОДУКТ
+
+Возможности
+Тарифы
+FAQ
+Документация API
+
+КОМПАНИЯ
+
+Контакты
+
+ДОКУМЕНТЫ
+
+Политика конфиденциальности
+Публичная оферта
+Политика возврата
+
+© 2026 SuluSystems · ИП IT FUSION
+
+Сделано в Казахстане 🇰🇿
+
+=== INPUT PLACEHOLDERS ===
+website | 
+ | Александр Иванов
+ | +7 (___) ___-__-__
+ | Клиника эстетической медицины
+
+=== IMAGES ===
+https://sulusystems.kz/assets/landing-hero-Cx-zWTXG.webp | alt=SuluSystems ERP
+https://sulusystems.kz/visa.png | alt=Visa
+https://sulusystems.kz/mastercard.png | alt=MasterCard
+https://sulusystems.kz/visa-secure.png | alt=Visa Secure
+https://sulusystems.kz/mastercard-id-check.png | alt=Mastercard Identity Check
+
+=== ICONS (lucide) ===
+lucide lucide-menu
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-sparkles
+lucide lucide-message-square
+lucide lucide-message-square
+lucide lucide-message-square
+lucide lucide-shield-check
+lucide lucide-sparkles
+lucide lucide-heart-pulse
+lucide lucide-stethoscope
+lucide lucide-building2 lucide-building-2
+lucide lucide-trending-up
+lucide lucide-package
+lucide lucide-user-check
+lucide lucide-sparkles
+lucide lucide-file-text
+lucide lucide-shield-check
+lucide lucide-layers
+lucide lucide-trending-up
+lucide lucide-smartphone
+lucide lucide-message-circle
+lucide lucide-play
+lucide lucide-chevron-left
+lucide lucide-chevron-right
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-check
+lucide lucide-chevron-down
+lucide lucide-chevron-down
+lucide lucide-chevron-down
+lucide lucide-chevron-down
+lucide lucide-chevron-down
+lucide lucide-chevron-down
+lucide lucide-chevron-down
+lucide lucide-chevron-down
+lucide lucide-chevron-down
+lucide lucide-phone
+lucide lucide-send

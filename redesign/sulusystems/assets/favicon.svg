@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="SuluSystems">
+  <!-- Знак и цвета сняты с public/icons/icon-512.png (иконка PWA), чтобы вкладка,
+       установленное приложение и Android-плитка показывали одну и ту же марку.
+       Глиф увеличен на 15% относительно PWA-версии: там поля нужны маскируемой
+       иконке, а на вкладке 16×16 они съедали бы букву до нечитаемой полоски. -->
+  <rect width="512" height="512" fill="#1A4A3A"/>
+  <g fill="#F8F5EF" transform="translate(256 256) scale(1.15) translate(-256 -256)">
+    <rect x="192" y="81" width="128" height="42"/>
+    <rect x="192" y="123" width="42" height="112"/>
+    <rect x="192" y="235" width="64" height="42"/>
+    <rect x="278" y="235" width="42" height="154"/>
+    <rect x="192" y="389" width="128" height="42"/>
+  </g>
+</svg>

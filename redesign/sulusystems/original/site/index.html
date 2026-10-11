@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- .ico первым: этот путь браузер запрашивает сам, и без файла nginx отдавал
+         на него index.html — браузер получал HTML вместо картинки и рисовал глобус.
+         SVG идёт следом и выигрывает там, где поддерживается. -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#064E3B" />
+    <meta name="robots" content="index, follow" />
+    <meta name="google-site-verification" content="HkwhBJ7OoRnIlBx7_WI_w3gyYHaL8pfzooOr2O4C_s8" />
+    <meta name="yandex-verification" content="da7a013ccbc8fbaa" />
+    <meta name="description" content="Медицинская ERP-система для клиник эстетической, превентивной медицины и сетей филиалов в Казахстане. Учет емкости кабинетов, автоматический документооборот (DocFactory: ИДС, договоры), точное списание препаратов по миллилитрам и ИИ-ассистент руководителя." />
+    <meta name="keywords" content="медицинская erp казахстан, программа для клиники алматы, автоматизация косметологии астана, учет препаратов в клинике, docfactory медицинские документы, медицинская информационная система казахстан" />
+    
+    <link rel="canonical" href="https://sulusystems.kz/" />
+
+    <!-- Geo targeting (Kazakhstan) -->
+    <meta name="geo.region" content="KZ" />
+    <meta name="geo.placename" content="Казахстан, Алматы, Астана" />
+    <meta name="geo.position" content="43.238949;76.889709" />
+    <meta name="ICBM" content="43.238949, 76.889709" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="SuluSystems" />
+    <meta property="og:locale" content="ru_KZ" />
+    <meta property="og:url" content="https://sulusystems.kz/" />
+    <meta property="og:title" content="SuluSystems — Медицинская ERP-система для клиник и сетей" />
+    <meta property="og:description" content="Единая ERP-система для клиник эстетической и превентивной медицины: управление ресурсами и емкостью кабинетов, аптечный склад, автогенерация ИДС и договоров, ИИ-ассистент и сквозной маркетинг." />
+    <meta property="og:image" content="https://sulusystems.kz/icons/apple-touch-icon-180.png" />
+    <meta property="og:image:width" content="180" />
+    <meta property="og:image:height" content="180" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://sulusystems.kz/" />
+    <meta property="twitter:title" content="SuluSystems — Медицинская ERP-система для клиник и сетей" />
+    <meta property="twitter:description" content="Единая ERP-система для клиник эстетической и превентивной медицины: управление ресурсами, аптечный склад, автогенерация ИДС и договоров." />
+    <meta property="twitter:image" content="https://sulusystems.kz/icons/apple-touch-icon-180.png" />
+
+    <!-- Устанавливаемый PWA «Рабочее место» выведен из эксплуатации (заменён нативным
+         приложением Sulu Staff): манифест и apple-mobile-web-app-теги убраны, чтобы
+         сайт больше не предлагался к установке как отдельное приложение. -->
+    <!-- Fonts Preconnect for fastest woff2 retrieval -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon-180.png" />
+    <title>SuluSystems — Медицинская ERP-система для клиник эстетической медицины и сетей</title>
+
+    <!-- Schema.org JSON-LD: SoftwareApplication -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "SuluSystems",
+      "operatingSystem": "Web, iOS, Android (PWA)",
+      "applicationCategory": "BusinessApplication, MedicalSoftware",
+      "url": "https://sulusystems.kz",
+      "image": "https://sulusystems.kz/icons/apple-touch-icon-180.png",
+      "description": "Медицинская ERP-система для клиник эстетической, превентивной медицины и сетей филиалов в Казахстане.",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "142"
+      },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free «Старт»",
+          "price": "0",
+          "priceCurrency": "KZT",
+          "description": "0 ₸ навсегда до 5 сотрудников, онлайн-запись и касса"
+        },
+        {
+          "@type": "Offer",
+          "name": "Старт",
+          "price": "9900",
+          "priceCurrency": "KZT",
+          "description": "9 900 ₸/мес для растущих клиник до 1 000 пациентов"
+        },
+        {
+          "@type": "Offer",
+          "name": "Бизнес",
+          "price": "34900",
+          "priceCurrency": "KZT",
+          "description": "34 900 ₸/мес, DocFactory, ИИ-ассистент, склад и зарплаты"
+        },
+        {
+          "@type": "Offer",
+          "name": "Enterprise",
+          "price": "0",
+          "priceCurrency": "KZT",
+          "priceSpecification": {
+            "@type": "PriceSpecification",
+            "priceCurrency": "KZT"
+          },
+          "description": "Индивидуальный тариф для медицинских сетей и франшиз"
+        }
+      ]
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD: MedicalBusiness / Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MedicalBusiness",
+      "name": "SuluSystems Medical ERP",
+      "legalName": "ИП IT FUSION",
+      "url": "https://sulusystems.kz",
+      "logo": "https://sulusystems.kz/icons/apple-touch-icon-180.png",
+      "telephone": "+77764290300",
+      "email": "info@itfusion.kz",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. 92, 59",
+        "addressLocality": "Усть-Каменогорск",
+        "addressRegion": "Восточно-Казахстанская область",
+        "addressCountry": "KZ"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "49.95",
+        "longitude": "82.61"
+      }
+    }
+    </script>
+
+    <!-- Schema.org JSON-LD: FAQPage (Google Rich Results Snippet) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "У нас уже есть база в другой системе (1C, Excel, Yclients, Bitrix24). Как перейти?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "На тарифах «Бизнес» и «Enterprise» наша инженерная команда бесплатно переносит все данные (пациентов, историю визитов, депозиты, складские остатки) за 48 часов без остановки приемов в клинике."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Чем SuluSystems отличается от обычных CRM для записи?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SuluSystems — это полноценная медицинская ERP. Мы не просто записываем контакт, а контролируем параллельную емкость врачей и кабинетов, списываем препараты по миллилитрам, автоматически формируем договоры и ИДС по стандартам Минздрава РК (DocFactory), контролируем интервалы несовместимости процедур (Medical Safety) и считаем сдельную зарплату."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что если у нас небольшой кабинет или 1–2 специалиста?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free-тариф подходит идеально: 0 ₸ навсегда, до 5 сотрудников, журнал записей, касса и онлайн-запись. Когда клиника расширяется — бесшовно переходите на «Старт» или «Бизнес»."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько времени занимает внедрение ERP-системы?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Запись и расписание запускаются за 1 день. Полный медицинский контур (DocFactory, аптечный склад, карта кабинетов) наши специалисты настраивают «под ключ» в течение 2–3 дней с обучением администраторов и врачей."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Где хранятся персональные данные пациентов и безопасно ли это?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Данные хранятся на защищенных серверах в строгом соответствии с Законом Республики Казахстан «О персональных данных и их защите». Врачам недоступны прямые контакты для копирования базы, ведется полный аудит действий сотрудников."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как работает автоматический документооборот (DocFactory)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "При создании записи или отметке о прибытии пациента система автоматически подставляет его реквизиты в шаблоны договоров, информированных согласий (ИДС) и протоколов. Документ готов к печати или электронной подписи в 1 клик."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Есть ли мобильное приложение для пациентов и врачей?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, современное PWA-приложение работает на iOS и Android. Пациенты записываются и видят абонементы в личном кабинете, а врачи ведут смену, просматривают расписание и протоколы прямо со смартфона."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что умеет ИИ-ассистент «Сулу» для руководителя?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ИИ-ассистент анализирует операционные и финансовые показатели клиники в реальном времени. Руководитель может задать вопрос обычным языком («Какая маржинальность инъекций за неделю?», «Кто из врачей недозагружен?») и получить точный аналитический ответ с рекомендациями."
+          }
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-BLv9NT6o.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/landing-Bc80jWzI.css">
+    <link rel="stylesheet" crossorigin href="/assets/onboarding-DjhiHecF.css">
+    <link rel="stylesheet" crossorigin href="/assets/index-DT8uV0U0.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"233348bd15d348129d14680f23d354ac","r":1,"spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
