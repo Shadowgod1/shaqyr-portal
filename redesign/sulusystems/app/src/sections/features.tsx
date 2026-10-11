@@ -2,7 +2,7 @@ import * as React from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Badge } from "@/components/ui/badge"
-import { SectionHead } from "@/components/sulu/section-head"
+import { ChapterHead } from "@/components/sulu/chapter"
 import { Tilt } from "@/components/sulu/tilt"
 import { SuluIcon } from "@/components/sulu/icon"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
@@ -31,22 +31,29 @@ export function Features() {
   }, [reduced])
 
   return (
-    <section id="features" className="scroll-mt-20 py-20 md:py-28">
+    <section id="features" className="scroll-mt-16 pb-24 md:pb-32">
       <div className="container-sulu">
-        <SectionHead title={features.title} lead={features.lead} />
-        <div ref={grid} className="grid gap-5 md:grid-cols-2 lg:grid-cols-3" style={{ perspective: 1600 }}>
-          {features.items.map((f) => (
-            <div key={f.title} data-feature className="h-full">
-              <Tilt max={7} className="h-full rounded-3xl">
-                <article className="flex h-full flex-col gap-4 rounded-3xl border bg-card p-7">
-                  <span className="flex size-12 items-center justify-center rounded-2xl bg-secondary text-secondary-foreground" style={{ transform: "translateZ(40px)" }}>
-                    <SuluIcon name={f.icon} className="size-6" />
-                  </span>
-                  <h3 className="text-xl leading-snug font-semibold" style={{ transform: "translateZ(24px)" }}>{f.title}</h3>
-                  <p className="flex-1 leading-relaxed text-muted-foreground">{f.text}</p>
-                  <div className="flex flex-col items-start gap-2 border-t pt-4">
-                    <Badge variant="outline">{f.badge}</Badge>
-                    <span className="text-sm text-muted-foreground">{f.note}</span>
+        <ChapterHead n={5} caption="Возможности" title={features.title} lead={features.lead} />
+        <div ref={grid} className="grid border-t rule-strong md:grid-cols-2 lg:grid-cols-3" style={{ perspective: 1600 }}>
+          {features.items.map((f, i) => (
+            <div
+              key={f.title}
+              data-feature
+              className="h-full border-b md:[&:nth-child(even)]:border-l lg:[&:nth-child(even)]:border-l-0 lg:[&:not(:nth-child(3n+1))]:border-l lg:[&:nth-last-child(-n+3)]:border-b-0"
+            >
+              <Tilt max={6} className="h-full">
+                <article className="flex h-full flex-col gap-4 bg-background px-6 pt-7 pb-9 md:px-7">
+                  <div className="flex items-center justify-between" style={{ transform: "translateZ(36px)" }}>
+                    <span className="text-[15px] font-bold text-[color:var(--kicker)]">5.{i + 1}</span>
+                    <SuluIcon name={f.icon} className="size-6 text-primary" />
+                  </div>
+                  <h3 className="text-2xl leading-[1.12]" style={{ transform: "translateZ(20px)" }}>
+                    {f.title}
+                  </h3>
+                  <p className="flex-1 text-base text-muted-foreground">{f.text}</p>
+                  <div className="flex flex-col items-start gap-2 border-t rule-strong pt-3">
+                    <Badge variant="secondary">{f.badge}</Badge>
+                    <span className="text-sm font-medium">{f.note}</span>
                   </div>
                 </article>
               </Tilt>

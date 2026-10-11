@@ -1,8 +1,7 @@
 import * as React from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { SectionHead } from "@/components/sulu/section-head"
-import { RevealGroup, RevealItem } from "@/components/sulu/reveal"
+import { ChapterHead } from "@/components/sulu/chapter"
 import { useMediaQuery, useReducedMotion } from "@/hooks/use-reduced-motion"
 import { erp } from "@/content"
 import { cn } from "@/lib/utils"
@@ -46,58 +45,54 @@ export function ErpChain() {
   }, [use3d])
 
   return (
-    <section ref={section} id="erp" className="relative overflow-hidden bg-surface py-20 md:py-28 lg:flex lg:min-h-svh lg:items-center">
+    <section ref={section} id="erp" className="relative overflow-hidden bg-background pb-24 lg:flex lg:min-h-svh lg:flex-col lg:justify-center lg:pb-10">
       <div className="container-sulu w-full">
-        <SectionHead kicker={erp.kicker} title={erp.title} lead={erp.lead} className="lg:mb-10" />
+        <ChapterHead n={1} caption={erp.kicker} title={erp.title} lead={erp.lead} className={use3d ? "[&>div:last-child]:mb-6 [&>div:last-child]:pt-8" : undefined} />
 
-        {use3d ? (
-          <div className="grid items-center gap-10 lg:grid-cols-[1fr_1.2fr]">
-            <ol className="flex flex-col gap-1" aria-label="Цепочка одного визита">
+        {use3d && (
+          <div className="relative h-[300px]" style={{ perspective: 1400 }} aria-hidden>
+            <div ref={ring} className="preserve-3d absolute inset-0 m-auto h-[230px] w-[280px]">
               {erp.steps.map((s, i) => (
-                <li
+                <div
                   key={s.title}
                   className={cn(
-                    "flex items-baseline gap-4 rounded-xl px-4 py-3 transition-colors duration-[var(--duration-medium)]",
-                    i === active ? "bg-card text-foreground shadow-sm" : "text-muted-foreground"
+                    "backface-hidden absolute inset-0 flex flex-col justify-between border rule-strong bg-card p-6 shadow-[0_30px_60px_-30px_rgba(6,46,34,0.45)] transition-opacity duration-[var(--duration-medium)]",
+                    i === active ? "opacity-100" : "opacity-50"
                   )}
+                  style={{ transform: `rotateY(${i * STEP}deg) translateZ(270px)` }}
                 >
-                  <strong className={cn("font-heading text-lg whitespace-nowrap", i === active && "text-primary")}>{s.title}</strong>
-                  <span className="text-sm">{s.text}</span>
-                </li>
-              ))}
-            </ol>
-            <div className="perspective relative h-[380px]" style={{ perspective: 1400 }} aria-hidden>
-              <div ref={ring} className="preserve-3d absolute inset-0 m-auto h-[260px] w-[300px]">
-                {erp.steps.map((s, i) => (
-                  <div
-                    key={s.title}
-                    className={cn(
-                      "backface-hidden absolute inset-0 flex flex-col justify-between rounded-3xl border bg-card p-7 shadow-[0_30px_60px_-30px_rgba(6,46,34,0.45)] transition-opacity duration-[var(--duration-medium)]",
-                      i === active ? "opacity-100" : "opacity-60"
-                    )}
-                    style={{ transform: `rotateY(${i * STEP}deg) translateZ(300px)` }}
-                  >
-                    <span className="font-heading text-7xl leading-none font-semibold text-gold">{i + 1}</span>
-                    <div className="flex flex-col gap-2">
-                      <strong className="font-heading text-2xl">{s.title.replace(/^\d\.\s/, "")}</strong>
-                      <span className="text-muted-foreground">{s.text}</span>
-                    </div>
+                  <span className="folio text-7xl text-primary">{i + 1}</span>
+                  <div className="flex flex-col gap-1.5">
+                    <strong className="text-xl tracking-tight">{s.title.replace(/^\d\.\s/, "")}</strong>
+                    <span className="text-sm text-muted-foreground">{s.text}</span>
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
-        ) : (
-          <RevealGroup className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-6">
-            {erp.steps.map((s, i) => (
-              <RevealItem key={s.title} className="flex flex-col gap-2 rounded-2xl border bg-card p-4 text-center">
-                <span className="font-heading text-3xl font-semibold text-gold">{i + 1}</span>
-                <strong className="text-sm">{s.title.replace(/^\d\.\s/, "")}</strong>
-                <span className="text-xs leading-snug text-muted-foreground">{s.text}</span>
-              </RevealItem>
-            ))}
-          </RevealGroup>
         )}
+
+        <ol className="grid grid-cols-2 border-t rule-strong md:grid-cols-3 lg:grid-cols-6" aria-label="Цепочка одного визита">
+          {erp.steps.map((s, i) => (
+            <li
+              key={s.title}
+              className={cn(
+                "relative flex min-h-[150px] flex-col gap-8 border-b border-l px-4 pt-5 pb-6 first:border-l-0 md:border-b-0 lg:min-h-[170px]",
+                "max-md:[&:nth-child(odd)]:border-l-0 md:max-lg:[&:nth-child(3n+1)]:border-l-0"
+              )}
+            >
+              {use3d && (
+                <span
+                  aria-hidden
+                  className="absolute -top-px left-0 h-1 bg-gold transition-[width] duration-[var(--duration-medium)] ease-[var(--ease-standard)]"
+                  style={{ width: i <= active ? "100%" : "0%" }}
+                />
+              )}
+              <b className={cn("folio text-[40px] transition-colors", use3d && i !== active ? "text-muted-foreground" : "text-foreground")}>{i + 1}</b>
+              <span className="text-[15px] font-medium">{s.title.replace(/^\d\.\s/, "")} — <span className="font-normal text-muted-foreground">{s.text}</span></span>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )

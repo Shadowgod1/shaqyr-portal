@@ -1,4 +1,3 @@
-import { Separator } from "@/components/ui/separator"
 import { Logo } from "./header"
 import { footer } from "@/content"
 import visa from "@/assets/sulu/visa.png"
@@ -15,13 +14,13 @@ const PAY = [
 
 export function Footer() {
   return (
-    <footer className="border-t bg-surface pt-14 pb-10 text-sm">
+    <footer className="border-t rule-strong pt-12 pb-10 text-sm">
       <div className="container-sulu">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_repeat(3,1fr)]">
-          <div className="flex flex-col gap-3">
+        <div className="grid-12 gap-y-10">
+          <div className="col-span-12 flex flex-col gap-3 md:col-span-4">
             <Logo />
             <p className="text-muted-foreground">{footer.about}</p>
-            <div className="flex flex-col gap-1 text-muted-foreground">
+            <div className="flex flex-col gap-0.5 text-muted-foreground">
               <p>{footer.company}</p>
               <p>{footer.bin}</p>
               <p>{footer.address}</p>
@@ -34,13 +33,13 @@ export function Footer() {
               <p>{footer.servers}</p>
             </div>
           </div>
-          {footer.columns.map((c) => (
-            <div key={c.title} className="flex flex-col gap-3">
-              <p className="text-xs font-semibold tracking-wider text-foreground uppercase">{c.title}</p>
+          {footer.columns.map((c, i) => (
+            <div key={c.title} className={["col-span-6 md:col-span-2 md:col-start-6", "col-span-6 md:col-span-2 md:col-start-8", "col-span-12 md:col-span-3 md:col-start-10"][i]}>
+              <p className="mb-3.5 text-[13px] font-bold">{c.title}</p>
               <ul className="flex flex-col gap-2">
                 {c.links.map((l) => (
                   <li key={l.label}>
-                    <a href={l.href} className="text-muted-foreground transition-colors hover:text-foreground">
+                    <a href={l.href} className="transition-colors hover:text-[color:var(--kicker)]">
                       {l.label}
                     </a>
                   </li>
@@ -49,17 +48,14 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <Separator className="my-8" />
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+        <div className="mt-14 flex flex-col justify-between gap-4 border-t pt-4 text-muted-foreground md:flex-row md:items-center">
+          <span>{footer.copyright}</span>
           <div className="flex flex-wrap items-center gap-3">
             {PAY.map((p) => (
-              <img key={p.alt} src={p.src} alt={p.alt} className="h-8 w-auto rounded-md bg-white px-2 py-1" loading="lazy" />
+              <img key={p.alt} src={p.src} alt={p.alt} className="h-7 w-auto border bg-white px-1.5 py-1" loading="lazy" />
             ))}
           </div>
-          <div className="flex flex-col gap-1 text-muted-foreground md:items-end">
-            <p>{footer.copyright}</p>
-            <p>{footer.made}</p>
-          </div>
+          <span>{footer.made}</span>
         </div>
       </div>
     </footer>

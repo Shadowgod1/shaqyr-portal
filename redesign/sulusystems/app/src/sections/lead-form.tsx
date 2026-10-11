@@ -9,6 +9,9 @@ import { Reveal } from "@/components/sulu/reveal"
 import { PLAN_EVENT } from "@/lib/plan"
 import { form } from "@/content"
 
+// Underlined fields, as in the first layout.
+const UNDERLINE = "h-12 border-0 border-b border-[color:var(--rule-strong)] bg-transparent px-0.5 text-lg shadow-none focus-visible:border-b-2 focus-visible:border-gold focus-visible:ring-0 dark:bg-transparent"
+
 type Lead = { name: string; phone: string; clinic: string; plan: string; website: string }
 const EMPTY: Lead = { name: "", phone: "", clinic: "", plan: "", website: "" }
 
@@ -28,7 +31,7 @@ function formatPhone(raw: string) {
   return out
 }
 
-export function LeadForm() {
+export function LeadFormCard() {
   const [lead, setLead] = React.useState<Lead>(EMPTY)
   const [sent, setSent] = React.useState(false)
   const [error, setError] = React.useState("")
@@ -67,14 +70,12 @@ export function LeadForm() {
   }
 
   return (
-    <section id="form" className="scroll-mt-20 pb-20 md:pb-28">
-      <div className="container-sulu max-w-2xl">
-        <Reveal className="flex flex-col gap-3 text-center">
-          <h2 className="text-3xl font-semibold tracking-tight md:text-[2.6rem]">{form.title}</h2>
-          <p className="text-muted-foreground md:text-lg">{form.lead}</p>
-        </Reveal>
-        <Reveal>
-          <form onSubmit={submit} className="relative mt-10 rounded-3xl border bg-card p-6 shadow-[0_40px_80px_-50px_var(--glow)] md:p-9" noValidate={false}>
+    <Reveal className="h-full">
+      <form onSubmit={submit} className="relative flex h-full flex-col gap-6 border-t-[6px] border-foreground pt-7">
+            <div className="flex flex-col gap-3">
+              <h3 className="text-2xl">{form.title}</h3>
+              <p className="text-muted-foreground">{form.lead}</p>
+            </div>
             {/* honeypot, same as the original */}
             <input
               name="website"
@@ -93,11 +94,12 @@ export function LeadForm() {
               )}
               <Field>
                 <FieldLabel htmlFor="lead-name">{form.name.label}</FieldLabel>
-                <Input id="lead-name" name="name" required autoComplete="name" placeholder={form.name.placeholder} value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} />
+                <Input className={UNDERLINE} id="lead-name" name="name" required autoComplete="name" placeholder={form.name.placeholder} value={lead.name} onChange={(e) => setLead({ ...lead, name: e.target.value })} />
               </Field>
               <Field>
                 <FieldLabel htmlFor="lead-phone">{form.phone.label}</FieldLabel>
                 <Input
+                  className={UNDERLINE}
                   id="lead-phone"
                   name="phone"
                   type="tel"
@@ -111,7 +113,7 @@ export function LeadForm() {
               </Field>
               <Field>
                 <FieldLabel htmlFor="lead-clinic">{form.clinic.label}</FieldLabel>
-                <Input id="lead-clinic" name="clinic" autoComplete="organization" placeholder={form.clinic.placeholder} value={lead.clinic} onChange={(e) => setLead({ ...lead, clinic: e.target.value })} />
+                <Input className={UNDERLINE} id="lead-clinic" name="clinic" autoComplete="organization" placeholder={form.clinic.placeholder} value={lead.clinic} onChange={(e) => setLead({ ...lead, clinic: e.target.value })} />
               </Field>
               <Button type="submit" size="xl" disabled={busy || sent} className="h-auto min-h-12 w-full py-3 whitespace-normal">
                 {sent ? form.success : form.submit}
@@ -133,8 +135,6 @@ export function LeadForm() {
               </div>
             </FieldGroup>
           </form>
-        </Reveal>
-      </div>
-    </section>
+    </Reveal>
   )
 }

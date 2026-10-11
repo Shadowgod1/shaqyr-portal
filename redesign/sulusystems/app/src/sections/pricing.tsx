@@ -1,8 +1,6 @@
 import { CheckIcon } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { SectionHead } from "@/components/sulu/section-head"
+import { ChapterHead } from "@/components/sulu/chapter"
 import { RevealGroup, RevealItem } from "@/components/sulu/reveal"
 import { Tilt } from "@/components/sulu/tilt"
 import { SuluIcon } from "@/components/sulu/icon"
@@ -12,66 +10,52 @@ import { cn } from "@/lib/utils"
 
 export function Pricing() {
   return (
-    <section id="pricing" className="scroll-mt-20 py-20 md:py-28">
+    <section id="pricing" className="scroll-mt-16 pb-24 md:pb-32">
       <div className="container-sulu">
-        <SectionHead title={pricing.title} lead={pricing.lead} />
-        <p className="-mt-8 mb-6 text-center text-sm text-muted-foreground lg:hidden">{pricing.swipe}</p>
-        <RevealGroup className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pt-6 pb-6 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0" style={{ perspective: 1600 }}>
+        <ChapterHead n={7} caption="Тарифы" title={pricing.title} lead={pricing.lead} />
+        <p className="mb-3 text-sm text-muted-foreground lg:hidden">{pricing.swipe}</p>
+        <RevealGroup className="-mx-4 flex snap-x snap-mandatory overflow-x-auto border-t rule-strong px-4 pb-4 lg:mx-0 lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0 lg:pb-0" style={{ perspective: 1600 }}>
           {pricing.plans.map((p) => (
-            <RevealItem key={p.name} className="w-[82%] shrink-0 snap-center sm:w-[46%] lg:w-auto">
-              <Tilt max={6} scale={1} className={cn("h-full rounded-3xl", p.hit && "lg:-mt-4")}>
-                <Card
-                  className={cn(
-                    "relative h-full overflow-visible rounded-3xl",
-                    p.hit && "ring-2 ring-primary shadow-[0_40px_80px_-30px_var(--glow)]"
+            <RevealItem key={p.name} className="w-[85%] shrink-0 snap-start border-r border-b sm:w-[48%] lg:w-auto lg:first:border-l">
+              <Tilt max={5} scale={1} className="h-full">
+                <article className="relative flex h-full flex-col bg-background px-6 pt-7 pb-7">
+                  {p.hit && <span aria-hidden className="absolute -inset-x-px -top-px h-1.5 bg-primary" />}
+                  <span className="min-h-[18px] text-[13px] font-bold text-[color:var(--kicker)]">{p.tag}</span>
+                  <div className="mt-2 flex items-center gap-2">
+                    <SuluIcon name={p.icon} className="size-5 text-primary" />
+                    <h3 className="text-2xl">{p.name}</h3>
+                  </div>
+                  <p className="mt-2 min-h-[44px] text-[15px] text-muted-foreground">{p.for}</p>
+                  <div className={cn("mt-7 leading-none font-bold whitespace-nowrap", p.price.length > 8 ? "text-[2rem] tracking-[-0.03em]" : "text-[3.2rem] tracking-[-0.05em]")}>{p.price}</div>
+                  <p className="mt-2 min-h-[40px] text-sm text-muted-foreground">
+                    {p.period}
+                    {p.extra && <> · {p.extra}</>}
+                  </p>
+                  <ul className="mt-5 flex-1 border-t rule-strong">
+                    {p.features.map((f) => (
+                      <li key={f} className="flex items-start gap-2 border-b py-2.5 text-[15px]">
+                        <CheckIcon aria-hidden className="mt-1 size-3.5 shrink-0 text-primary" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  {p.href === "#form" ? (
+                    <Button size="xl" variant="outline" className="mt-7 w-full border-[color:var(--rule-strong)]" onClick={() => requestDemo("Enterprise")}>
+                      {p.cta}
+                    </Button>
+                  ) : (
+                    <Button asChild size="xl" variant={p.hit ? "default" : "outline"} className={cn("mt-7 w-full", !p.hit && "border-[color:var(--rule-strong)]")}>
+                      <a href={p.href}>{p.cta}</a>
+                    </Button>
                   )}
-                >
-                  {p.tag && (
-                    <Badge className={cn("absolute -top-3 left-6 h-6 px-3 text-[0.7rem] tracking-wider", !p.hit && "bg-secondary text-secondary-foreground")}>
-                      {p.tag}
-                    </Badge>
-                  )}
-                  <CardHeader className="gap-3 pt-2">
-                    <span className="flex size-11 items-center justify-center rounded-xl bg-secondary text-secondary-foreground" title={p.emoji}>
-                      <SuluIcon name={p.icon} className="size-5" />
-                    </span>
-                    <CardTitle className="font-heading text-2xl">{p.name}</CardTitle>
-                    <div className="flex flex-wrap items-baseline gap-x-1.5">
-                      <span className={cn("font-semibold tracking-tight whitespace-nowrap", p.price.length > 8 ? "text-[1.7rem]" : "text-4xl")}>{p.price}</span>
-                      <span className="text-sm text-muted-foreground">{p.period}</span>
-                    </div>
-                    <CardDescription>{p.for}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="flex-1">
-                    <ul className="flex flex-col gap-2.5 text-sm">
-                      {p.features.map((f) => (
-                        <li key={f} className="flex items-start gap-2">
-                          <CheckIcon aria-hidden className="mt-0.5 size-4 shrink-0 text-primary" />
-                          {f}
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                  <CardFooter className="flex-col items-stretch gap-3">
-                    {p.extra && <p className="text-center text-xs text-muted-foreground">{p.extra}</p>}
-                    {p.href === "#form" ? (
-                      <Button size="lg" variant={p.hit ? "default" : "outline"} onClick={() => requestDemo("Enterprise")}>
-                        {p.cta}
-                      </Button>
-                    ) : (
-                      <Button asChild size="lg" variant={p.hit ? "default" : "outline"}>
-                        <a href={p.href}>{p.cta}</a>
-                      </Button>
-                    )}
-                  </CardFooter>
-                </Card>
+                </article>
               </Tilt>
             </RevealItem>
           ))}
         </RevealGroup>
-        <p className="mt-6 text-center text-sm text-muted-foreground">
+        <p className="mt-6 text-[15px] text-muted-foreground">
           {pricing.yearly}{" "}
-          <a href="#faq" className="font-medium text-primary underline-offset-4 hover:underline">
+          <a href="#faq" className="font-medium text-foreground underline underline-offset-4">
             {pricing.compare}
           </a>
         </p>

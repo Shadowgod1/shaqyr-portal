@@ -180,3 +180,4 @@ export const footer = {
   copyright: "© 2026 SuluSystems · ИП IT FUSION",
   made: "Сделано в Казахстане 🇰🇿",
 }
+

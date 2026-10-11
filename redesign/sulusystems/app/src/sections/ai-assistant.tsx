@@ -2,10 +2,10 @@ import * as React from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { motion, useInView } from "motion/react"
-import { MessageSquareIcon, ShieldCheckIcon, SparklesIcon } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+import { MessageSquareIcon, ShieldCheckIcon } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Reveal } from "@/components/sulu/reveal"
+import { ChapterHead } from "@/components/sulu/chapter"
 import { useReducedMotion } from "@/hooks/use-reduced-motion"
 import { requestDemo } from "@/lib/plan"
 import { ai } from "@/content"
@@ -40,61 +40,57 @@ export function AiAssistant() {
   const showAnswer = inView || reduced
 
   return (
-    <section id="ai" className="relative overflow-hidden py-20 md:py-28">
-      <div className="container-sulu grid items-center gap-12 lg:grid-cols-2">
-        <Reveal className="flex flex-col items-start gap-5">
-          <Badge variant="secondary" className="h-7 gap-1.5 px-3">
-            <SparklesIcon data-icon="inline-start" />
-            {ai.badge}
-          </Badge>
-          <h2 className="text-3xl leading-[1.12] font-semibold tracking-tight md:text-[2.6rem]">{ai.title}</h2>
-          <p className="text-base leading-relaxed text-muted-foreground md:text-lg">{ai.lead}</p>
-          <p className="flex items-start gap-2 text-sm text-muted-foreground">
-            <ShieldCheckIcon aria-hidden className="mt-0.5 size-4 shrink-0 text-primary" />
-            {ai.privacy}
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <Button size="lg" variant="outline" onClick={() => requestDemo("Бизнес")}>
-              {ai.ctaDemo}
-            </Button>
-            <Button asChild size="lg" variant="secondary">
-              <a href="#pricing">{ai.ctaPricing}</a>
-            </Button>
-          </div>
-        </Reveal>
-
-        <div className="perspective" style={{ perspective: 1600 }}>
-          <div ref={panel} className="preserve-3d rounded-3xl border bg-card p-5 shadow-[0_50px_100px_-40px_rgba(6,46,34,0.5)] md:p-7">
-            <div className="flex flex-col gap-2" aria-label="Примеры вопросов">
-              {ai.questions.map((q, i) => (
-                <div
-                  key={q}
-                  className="flex items-center gap-3 rounded-xl border bg-background px-4 py-3 text-sm"
-                  style={{ transform: `translateZ(${30 - i * 10}px)` }}
-                >
-                  <MessageSquareIcon aria-hidden className="size-4 shrink-0 text-primary" />
-                  {q}
-                </div>
-              ))}
+    <section id="ai" className="relative overflow-hidden bg-surface pb-24 md:pb-32">
+      <div className="container-sulu">
+        <ChapterHead n={2} caption="ИИ-ассистент «Сулу»" title={ai.title} />
+        <div className="grid-12 items-start gap-y-12">
+          <Reveal className="col-span-12 flex flex-col items-start gap-5 md:col-span-10 md:col-start-3 lg:col-span-5 lg:col-start-3">
+            <span className="text-[13px] font-semibold text-[color:var(--kicker)]">{ai.badge}</span>
+            <p className="text-[19px] leading-snug">{ai.lead}</p>
+            <p className="flex items-start gap-2 text-[17px] text-muted-foreground">
+              <ShieldCheckIcon aria-hidden className="mt-1 size-4 shrink-0 text-primary" />
+              {ai.privacy}
+            </p>
+            <div className="mt-3 flex flex-wrap items-center gap-5">
+              <Button size="xl" variant="outline" className="border-[color:var(--rule-strong)]" onClick={() => requestDemo("Бизнес")}>
+                {ai.ctaDemo}
+              </Button>
+              <a href="#pricing" className="text-[15px] underline-offset-4 hover:underline">
+                {ai.ctaPricing}
+              </a>
             </div>
-            <div ref={chat} className="mt-6 flex flex-col gap-3" style={{ transform: "translateZ(60px)" }}>
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={showAnswer ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.41, ease: [0.24, 1, 0.4, 1] }}
-                className="ml-auto max-w-[85%] rounded-2xl rounded-br-md bg-primary px-4 py-3 text-sm text-primary-foreground"
-              >
-                {ai.questions[0]}
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 12 }}
-                animate={showAnswer ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.6, duration: 0.41, ease: [0.24, 1, 0.4, 1] }}
-                className="max-w-[92%] rounded-2xl rounded-bl-md border bg-secondary px-4 py-3 text-sm leading-relaxed text-secondary-foreground"
-              >
-                <TypedAnswer start={showAnswer} instant={reduced} />
-              </motion.div>
-              <p className="text-xs text-muted-foreground">{ai.disclaimer}</p>
+          </Reveal>
+
+          <div className="col-span-12 md:col-span-10 md:col-start-3 lg:col-span-4 lg:col-start-9" style={{ perspective: 1600 }}>
+            <div ref={panel} className="preserve-3d border-t rule-strong bg-card shadow-[0_50px_100px_-40px_rgba(6,46,34,0.45)]">
+              <p className="border-b px-5 py-3 text-[13px] text-muted-foreground">Примеры вопросов</p>
+              <div className="flex flex-col" aria-label="Примеры вопросов">
+                {ai.questions.map((q, i) => (
+                  <div key={q} className="flex items-center gap-3 border-b px-5 py-4 text-[17px] leading-snug font-medium" style={{ transform: `translateZ(${30 - i * 10}px)` }}>
+                    <MessageSquareIcon aria-hidden className="size-4 shrink-0 text-primary" />
+                    «{q}»
+                  </div>
+                ))}
+              </div>
+              <div ref={chat} className="flex flex-col gap-3 p-5" style={{ transform: "translateZ(60px)" }}>
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={showAnswer ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.41, ease: [0.24, 1, 0.4, 1] }}
+                  className="ml-auto max-w-[85%] bg-primary px-4 py-3 text-sm text-primary-foreground"
+                >
+                  {ai.questions[0]}
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={showAnswer ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.6, duration: 0.41, ease: [0.24, 1, 0.4, 1] }}
+                  className="max-w-[94%] border-l-2 border-gold bg-secondary px-4 py-3 text-sm leading-relaxed text-secondary-foreground"
+                >
+                  <TypedAnswer start={showAnswer} instant={reduced} />
+                </motion.div>
+                <p className="text-xs text-muted-foreground">{ai.disclaimer}</p>
+              </div>
             </div>
           </div>
         </div>

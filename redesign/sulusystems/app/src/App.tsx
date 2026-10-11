@@ -8,8 +8,7 @@ import { Features } from "@/sections/features"
 import { Demo } from "@/sections/demo"
 import { Pricing } from "@/sections/pricing"
 import { Faq } from "@/sections/faq"
-import { Offer } from "@/sections/offer"
-import { LeadForm } from "@/sections/lead-form"
+import { Closing } from "@/sections/closing"
 import { Footer } from "@/sections/footer"
 
 export default function App() {
@@ -29,8 +28,7 @@ export default function App() {
         <Demo />
         <Pricing />
         <Faq />
-        <Offer />
-        <LeadForm />
+        <Closing />
       </main>
       <Footer />
     </>

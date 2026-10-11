@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils"
 
 export function Logo({ className }: { className?: string }) {
   return (
-    <a href="#top" className={cn("flex items-center gap-2.5 font-heading text-xl font-semibold tracking-tight", className)}>
-      <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" className="size-8 rounded-lg" />
+    <a href="#top" className={cn("flex shrink-0 items-center gap-2.5 font-heading text-xl font-bold tracking-tight", className)}>
+      <img src={`${import.meta.env.BASE_URL}favicon.svg`} alt="" className="size-7" />
       SuluSystems
     </a>
   )
@@ -55,25 +55,22 @@ export function Header() {
       // Original: initial {y:-12, opacity:0} → spring (damping 22, stiffness 320)
       initial={{ y: -12, opacity: 0 }}
       animate={{ y: 0, opacity: 1, transition: { type: "spring", damping: 22, stiffness: 320 } }}
-      className={cn(
-        "sticky top-0 z-40 border-b transition-[background-color,border-color,backdrop-filter] duration-[var(--duration-medium)]",
-        scrolled ? "border-border bg-background/80 backdrop-blur-xl" : "border-transparent bg-transparent"
-      )}
+      className={cn("sticky top-0 z-40 border-b rule-strong bg-background transition-shadow duration-[var(--duration-medium)]", scrolled && "shadow-[0_10px_30px_-24px_rgba(6,46,34,0.5)]")}
     >
-      <div className="container-sulu flex h-16 items-center gap-6">
+      <div className="container-sulu flex h-16 items-center gap-10">
         <Logo />
-        <nav aria-label="Разделы" className="hidden items-center gap-6 text-sm font-medium lg:flex">
+        <nav aria-label="Разделы" className="hidden items-center gap-7 text-[15px] lg:flex">
           {nav.map((n) => (
-            <a key={n.href} href={n.href} className="text-muted-foreground transition-colors hover:text-foreground">
+            <a key={n.href} href={n.href} className="transition-colors hover:text-[color:var(--kicker)]">
               {n.label}
             </a>
           ))}
         </nav>
-        <div className="ml-auto hidden items-center gap-3 lg:flex">
+        <div className="ml-auto hidden items-center gap-5 lg:flex">
           <StyleSwitcher />
-          <Button asChild variant="ghost" size="lg">
-            <a href={`${SITE}/login`}>Вход</a>
-          </Button>
+          <a href={`${SITE}/login`} className="text-[15px] transition-colors hover:text-[color:var(--kicker)]">
+            Вход
+          </a>
           <Button asChild size="lg">
             <a href={`${SITE}/signup`}>Попробовать бесплатно</a>
           </Button>
@@ -93,7 +90,7 @@ export function Header() {
             </SheetHeader>
             <div className="flex flex-col gap-1 px-4">
               {nav.map((n) => (
-                <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="rounded-lg px-2 py-3 text-lg font-medium hover:bg-muted">
+                <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="rounded-lg px-2 py-3 font-heading text-2xl font-medium hover:bg-muted">
                   {n.label}
                 </a>
               ))}
